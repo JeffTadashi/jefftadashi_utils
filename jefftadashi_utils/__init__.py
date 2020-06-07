@@ -22,14 +22,22 @@ oui = oui.oui #from file oui.py
 ################
 # ASCII Colors #
 ################
+# see https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
 class color:
+    darkpurple = '\033[35m'
+    darkcyan = '\033[36m'
+    darkblue = '\033[34m'
+    darkgreen = '\033[32m'
+    darkyellow = '\033[33m'
+    darkred = '\033[31m'
+
     purple = '\033[95m'
     cyan = '\033[96m'
-    darkcyan = '\033[36m'
     blue = '\033[94m'
     green = '\033[92m'
     yellow = '\033[93m'
     red = '\033[91m'
+    
     bold = '\033[1m'
     underline = '\033[4m'
     # End is important! It is used to revert color to normal.
