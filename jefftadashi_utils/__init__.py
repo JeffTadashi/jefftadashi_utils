@@ -66,7 +66,7 @@ class regex:
     # Simple version, will match things like 555.555.555.555
     ip = r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
     # Full CIDR notation match, IP + CIDR extention. Mandatory all (e.g. 10.0.0.0/24)
-    cidr = ip + r"(/[0-9]{1,2})"
+    cidr = r"(" + ip + r")" + r"(/[0-9]{1,2})"
     # Match CIDR or just plain IP. In other words, CIDR extention is optional
     ip_or_cidr = cidr + r"?" 
 
