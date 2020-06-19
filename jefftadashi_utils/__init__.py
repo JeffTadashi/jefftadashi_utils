@@ -59,7 +59,7 @@ class regex:
     int_cisco = r"([A-Z][a-zA-Z]{1,}\d{1,2}/\d{1,2}(/\d{1,2})?|(Vl|Vlan)\d{1,4}|(Po|Port-channel)\d{1,3}|(Lo|Loopback)\d{1,10}|(Tu|Tunnel)\d{1,10}|(Nu|Null)\d{1,1})"
 
     #For Juniper, match interface without the trailing .0 . In particular, ae0 has negative lookbehind to avoid match like bae0 
-    int_juniper = r"[a-z]{2}-[0-9]/[0-9]/[0-9]{2}|(?<![0-9a-zA-Z])ae[0-9]"
+    int_juniper = r"[a-z]{2}-[0-9]{1,2}/[0-9]{1,2}/[0-9]{1,2}|(?<![0-9a-zA-Z])ae[0-9]{1,2}"
 
     int_all = r"(" + int_cisco + r"|" + int_juniper + r")"
 

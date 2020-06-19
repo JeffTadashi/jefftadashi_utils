@@ -6,5 +6,6 @@ To build:
  - run `python3 setup.py sdist bdist_wheel`
  - run `twine upload dist/*`
  - delete build folder when done
+ - Update to Github (git add ., git commit -m "test", git push)
 
 See references here: https://packaging.python.org/tutorials/packaging-projects/
