@@ -5,9 +5,9 @@
 # Suggested Call:
 # from jefftadashi_utils import jtu
 
-# TODO: Function to convert from one mac address format to another
-
 # TODO: Function to normalize Cisco interface name (short to long, etc)
+
+# TODO: General function for sendmail API
 
 import re
 from . import oui
@@ -94,4 +94,37 @@ def get_mac_vendor(maca):
     
     
 
+#########################
+# MAC Address Converter #
+#########################
+def convert_mac(mac_adr, separator=":", separate_length=2, uppercase=True):
+# INPUTS: 
+# 1st - mac address as string, any format
+# 2nd - separator character, E.G. "." or ":" or "-". Default is colon.
+# 3rd - length between separators. Default is 2, e.g. aa:bb:cc:dd:ee:ff. Cisco format would be 4, e.g. aaaa.bbbb.cccc
+#     - Values of 0,2,3,4,6 are allowed.
+# 4th - Uppercase for True (default). Lowercase for False.
 
+    # First, remove all separators (get alphanumeric string)
+    mac_adr = re.sub(r"[^a-zA-Z0-9]", "", mac_adr)
+
+    # Next, set case
+    if uppercase == False:
+        mac_adr = mac_adr.lower()
+    else: # If true or otherwise
+        mac_adr = mac_adr.upper()
+
+    # Next, add separators
+    if separate_length == 2:
+        mac_adr = mac_adr[:2] + separator + mac_adr[2:4] + separator + mac_adr[4:6] + separator + mac_adr[6:8] + separator + mac_adr[8:10] + separator + mac_adr[10:12]
+    elif separate_length == 3:
+        mac_adr = mac_adr[:3] + separator + mac_adr[3:6] + separator + mac_adr[6:9] + separator + mac_adr[9:12]
+    elif separate_length == 4:
+        mac_adr = mac_adr[:4] + separator + mac_adr[4:8] + separator + mac_adr[8:12]
+    elif separate_length == 6:
+        mac_adr = mac_adr[:6] + separator + mac_adr[6:12]
+    else:
+        pass # Don't add any separators in any other cases, such as 0
+
+    # Should be all done!
+    return mac_adr
