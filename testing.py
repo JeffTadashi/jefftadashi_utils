@@ -5,4 +5,4 @@
 import jefftadashi_utils as jtu
 
 
-print (jtu.convert_mac("1234.4bcf.23fc","-",3,False))
+print (jtu.convert_mac("1234.4bcf.23fc","+",4,False))
